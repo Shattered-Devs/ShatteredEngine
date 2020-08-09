@@ -1,0 +1,7 @@
+[submodule "3rdParty/Vulkan-Headers"]
+	path = 3rdParty/Vulkan-Headers
+	url = https://github.com/KhronosGroup/Vulkan-Headers.git
+	branch = sdk-1.2.148
+[submodule "3rdParty/SDL"]
+	path = 3rdParty/SDL
+	url = https://github.com/SDL-mirror/SDL.git
