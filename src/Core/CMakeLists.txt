@@ -13,7 +13,7 @@ file(GLOB sources "*.h" "*.cpp")
 
 project(ShatteredEngine_Core)
 
-add_library(ShatteredEngine_Core STATIC "Initialize.h" "Initialize.cpp")
+add_library(ShatteredEngine_Core STATIC ${sources})
 
 target_include_directories(ShatteredEngine_Core PRIVATE ${headers})
-target_link_libraries(ShatteredEngine_Core "SDL2" "SDL2main" ${Vulkan_LIBRARY})
+target_link_libraries(ShatteredEngine_Core "SDL2" "SDL2main" "ShatteredEngine_Utils" ${Vulkan_LIBRARY})

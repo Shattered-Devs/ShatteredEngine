@@ -1,6 +1,5 @@
-#include <iostream>
 #include <memory>
-#include "core/Initialize.h"
+#include "Core/Initialize.h"
 
 int main(int argc, char** argv)
 {
