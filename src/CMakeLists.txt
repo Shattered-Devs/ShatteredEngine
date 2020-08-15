@@ -5,9 +5,10 @@ add_subdirectory(Core)
 # Utils
 add_subdirectory(Utils)
 
-set(CXX_STANDARD 17)
 
 add_executable(ShatteredEngine main.cpp)
 
+# Force C++ 17 Standard
+set_property(TARGET ShatteredEngine PROPERTY CXX_STANDARD 17)
+
 target_link_libraries(ShatteredEngine "ShatteredEngine_Core")
-target_include_directories(ShatteredEngine PRIVATE "../3rdParty/termcolor/include")

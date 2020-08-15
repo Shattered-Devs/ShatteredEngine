@@ -4,14 +4,14 @@
 #include <ctime>
 #include <iostream>
 #include <string>
-#include <termcolor/termcolor.hpp>
+#include "../../3rdParty/termcolor/include/termcolor/termcolor.hpp"
 
 namespace ShatteredEngine_Utils
 {
     class Logs
     {
     public:
-    enum LogType
+    enum class LogType
     {
         INFO,
         WARN,
