@@ -5,6 +5,9 @@
 # IntelliJ base IDE
 .idea/
 
+# macOS .DS_Store
+.DS_Store
+
 # CMake Visual Studio Code build dir
 build/
 # CMake Visual Studio 2019 build dir

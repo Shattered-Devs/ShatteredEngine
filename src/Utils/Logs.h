@@ -20,7 +20,7 @@ namespace ShatteredEngine_Utils
         ERR
     };
 
-    static void WriteLog(Logs::LogType pType, char* pMessage);
+    static void WriteLog(Logs::LogType pType, char const *pMessage);
     };    
 }
 

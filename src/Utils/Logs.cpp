@@ -2,7 +2,7 @@
 
 using namespace ShatteredEngine_Utils;
 
-void Logs::WriteLog(Logs::LogType pType, char* pMessage)
+void Logs::WriteLog(Logs::LogType pType, char const *pMessage)
 {
     auto _time = std::chrono::system_clock::now();
 

@@ -4,20 +4,21 @@
 #include <iostream>
 #include <clocale>
 #include "../Utils/Logs.h"
-// #include <SDL.h>
-// #include <SDL_syswm.h>
+#include <SDL.h>
+#include <SDL_syswm.h>
 
 namespace ShatteredEngine_Core
 {
     class Initialize
     {
         private:
-        // void Init_SDL2();
+        void Init_SDL2();
+        void Destroy_SDL2();
         
         public:
-        // SDL_Window *window = nullptr;
-        // SDL_SysWMinfo *windowInfo = nullptr;
-        // SDL_Event event;
+        SDL_Window *window = nullptr;
+        SDL_SysWMinfo windowInfo;
+        SDL_Event event;
 
         Initialize();
         ~Initialize();
