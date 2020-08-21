@@ -1,6 +1,4 @@
 cmake_minimum_required(VERSION "3.0")
-set(CXX_STANDARD 17)
-
 project(ShatteredEngine_Utils)
 
 file(GLOB sources "*.h" "*.cpp")
