@@ -1,6 +1,7 @@
 [submodule "3rdParty/SDL"]
 	path = 3rdParty/SDL
 	url = https://github.com/SDL-mirror/SDL.git
+	branch = Tags/release-2.0.12
 [submodule "3rdParty/termcolor"]
 	path = 3rdParty/termcolor
 	url = https://github.com/ikalnytskyi/termcolor.git
