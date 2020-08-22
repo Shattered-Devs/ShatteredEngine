@@ -9,10 +9,12 @@ add_library(bimg ${sources})
 
 set_property(TARGET bimg PROPERTY CXX_STANDARD 14)
 
+target_include_directories(bimg PRIVATE ${includes})
+
 if(MSVC)
-	target_include_directories(bimg PRIVATE "bx/include/compat/msvc" PRIVATE ${includes})
+	target_include_directories(bimg PRIVATE "bx/include/compat/msvc")
 elseif(WIN32)
-	target_include_directories(bimg PRIVATE "bx/include/compat/mingw" PRIVATE ${includes})
+	target_include_directories(bimg PRIVATE "bx/include/compat/mingw")
 elseif(APPLE AND NOT UNIX)
-	target_include_directories(bimg PRIVATE "bx/include/compat/osx" PRIVATE ${includes})
+	target_include_directories(bimg PRIVATE "bx/include/compat/osx")
 endif()
