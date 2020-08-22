@@ -6,6 +6,8 @@
 #include "../Utils/Logs.h"
 #include <SDL.h>
 #include <SDL_syswm.h>
+#include <bgfx/bgfx.h>
+#include <bgfx/platform.h>
 
 namespace ShatteredEngine_Core
 {
@@ -13,6 +15,9 @@ namespace ShatteredEngine_Core
     {
         private:
         void Init_SDL2();
+        static void Init_BGFX(SDL_SysWMinfo pWindowInfo);
+
+        static void Destroy_BGFX();
         void Destroy_SDL2();
         
         public:

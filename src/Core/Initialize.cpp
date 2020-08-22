@@ -14,6 +14,41 @@ Initialize::Initialize()
     std::cout.imbue(std::locale());
 
     Init_SDL2();
+    Init_BGFX(windowInfo);
+
+    switch (bgfx::getRendererType()) {
+        case bgfx::RendererType::Noop:
+            Logs::WriteLog(Logs::LogType::ERR, "NO GRAPHICAL RENDERER INITIALIZED !!!");
+            break;
+        case bgfx::RendererType::Direct3D9:
+            Logs::WriteLog(Logs::LogType::WARN, "DEBUG -> Graphical Renderer initialized with the Renderer: DirectX9");
+            break;
+        case bgfx::RendererType::Direct3D11:
+            Logs::WriteLog(Logs::LogType::WARN, "DEBUG -> Graphical Renderer initialized with the Renderer: DirectX11");
+            break;
+        case bgfx::RendererType::Direct3D12:
+            Logs::WriteLog(Logs::LogType::WARN, "DEBUG -> Graphical Renderer initialized with the Renderer: DirectX12");
+            break;
+        case bgfx::RendererType::Metal:
+            Logs::WriteLog(Logs::LogType::WARN, "DEBUG -> Graphical Renderer initialized with the Renderer: Metal");
+            break;
+        case bgfx::RendererType::OpenGL:
+            Logs::WriteLog(Logs::LogType::WARN, "DEBUG -> Graphical Renderer initialized with the Renderer: OpenGL");
+            break;
+        case bgfx::RendererType::OpenGLES:
+            Logs::WriteLog(Logs::LogType::WARN, "DEBUG -> Graphical Renderer initialized with the Renderer: OpenGLES");
+            break;
+        case bgfx::RendererType::Vulkan:
+            Logs::WriteLog(Logs::LogType::WARN, "DEBUG -> Graphical Renderer initialized with the Renderer: Vulkan");
+            break;
+        case bgfx::RendererType::Gnm:
+            Logs::WriteLog(Logs::LogType::WARN, "DEBUG -> Graphical Renderer initialized with the Renderer: PlayStation Graphical Render");
+            break;
+    }
+
+    const bgfx::ViewId _clearView = 0;
+    bgfx::setViewClear(_clearView, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0x6495EDFF, 1.0f, 0);
+    bgfx::setViewRect(_clearView, 10, 10, 100, 100);
     
     // TEMP !!!
     while (true)
@@ -24,11 +59,15 @@ Initialize::Initialize()
             Logs::WriteLog(Logs::LogType::INFO, "Closing the SDL Window !");
             break;
         }
+        bgfx::touch(_clearView);
+
+        bgfx::frame(false);
     }
 }
     
 Initialize::~Initialize()
 {
+    Destroy_BGFX();
     Destroy_SDL2();
     std::cout << "Bye CORE !" << std::endl;
 }
@@ -60,6 +99,26 @@ void Initialize::Init_SDL2()
         return;
     }
     Logs::WriteLog(Logs::LogType::INFO, "SDL Window informations was successfully get !");
+}
+
+void Initialize::Init_BGFX(SDL_SysWMinfo pWindowInfo) {
+    bgfx::renderFrame();
+
+    bgfx::PlatformData _platformData;
+    _platformData.nwh = pWindowInfo.info.win.window;
+    bgfx::setPlatformData(_platformData);
+
+    bgfx::Init _init;
+    _init.deviceId = BGFX_PCI_ID_NONE;
+    _init.type = bgfx::RendererType::Vulkan;
+    _init.resolution.width = 500;
+    _init.resolution.height = 500;
+    _init.resolution.reset = BGFX_RESET_VSYNC;
+    bgfx::init(_init);
+}
+
+void Initialize::Destroy_BGFX() {
+    bgfx::shutdown();
 }
 
 void Initialize::Destroy_SDL2()
