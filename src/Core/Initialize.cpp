@@ -44,6 +44,15 @@ Initialize::Initialize()
         case bgfx::RendererType::Gnm:
             Logs::WriteLog(Logs::LogType::WARN, "DEBUG -> Graphical Renderer initialized with the Renderer: PlayStation Graphical Render");
             break;
+        case bgfx::RendererType::Nvn:
+            Logs::WriteLog(Logs::LogType::WARN, "DEBUG -> Graphical Renderer initialized with the Renderer: Nintendo Switch Graphical Render");
+            break;
+        case bgfx::RendererType::WebGPU:
+            Logs::WriteLog(Logs::LogType::WARN, "DEBUG -> Graphical Renderer initialized with the Renderer: WebGPU");
+            break;
+        case bgfx::RendererType::Count:
+            Logs::WriteLog(Logs::LogType::WARN, "DEBUG -> Graphical Renderer initialized with the Renderer: Default");
+            break;
     }
 
     const bgfx::ViewId _clearView = 0;
@@ -105,12 +114,12 @@ void Initialize::Init_BGFX(SDL_SysWMinfo pWindowInfo) {
     bgfx::renderFrame();
 
     bgfx::PlatformData _platformData;
-    _platformData.nwh = pWindowInfo.info.win.window;
+    _platformData.nwh = pWindowInfo.info.cocoa.window;
     bgfx::setPlatformData(_platformData);
 
     bgfx::Init _init;
     _init.deviceId = BGFX_PCI_ID_NONE;
-    _init.type = bgfx::RendererType::Vulkan;
+    _init.type = bgfx::RendererType::Metal;
     _init.resolution.width = 500;
     _init.resolution.height = 500;
     _init.resolution.reset = BGFX_RESET_VSYNC;
