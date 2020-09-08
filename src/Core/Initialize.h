@@ -1,6 +1,11 @@
 #ifndef CORE_INITIALIZE_H
 #define CORE_INITIALIZE_H
 
+// Hack for X11
+#if BX_PLATFORM_LINUX || BX_PLATFORM_BSD
+#define SDL_VIDEO_DRIVER_X11 1
+#endif
+
 #include <iostream>
 #include <clocale>
 #include "../Utils/Logs.h"

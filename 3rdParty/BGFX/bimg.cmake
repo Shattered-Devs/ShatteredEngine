@@ -9,7 +9,7 @@ add_library(bimg ${sources})
 
 set_property(TARGET bimg PROPERTY CXX_STANDARD 14)
 
-target_include_directories(bimg PRIVATE ${includes})
+target_include_directories(bimg PUBLIC ${includes})
 
 if(MSVC)
 	target_include_directories(bimg PRIVATE "bx/include/compat/msvc")
@@ -17,4 +17,8 @@ elseif(WIN32)
 	target_include_directories(bimg PRIVATE "bx/include/compat/mingw")
 elseif(APPLE)
 	target_include_directories(bimg PRIVATE "bx/include/compat/osx")
+endif()
+
+if(UNIX)
+    target_link_libraries(bimg PUBLIC "bx")
 endif()

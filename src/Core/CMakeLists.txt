@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION "3.0")
 project(ShatteredEngine_Core)
 
 # Headers
-set(headers "../../3rdParty/SDL/include" "../../3rdParty/BGFX/bx/include" "../../3rdParty/BGFX/bgfx/include")
+set(headers "../../3rdParty/SDL/include" "../../3rdParty/BGFX/bx/include" "../../3rdParty/BGFX/bgfx/include" "../../3rdParty/BGFX/bimg/include")
 # Sources code
 file(GLOB sources "*.h" "*.cpp")
 
@@ -18,6 +18,8 @@ if(MSVC)
     target_include_directories(ShatteredEngine_Core PRIVATE "../../3rdParty/BGFX/bx/include/compat/msvc")
 elseif(WIN32)
     target_include_directories(ShatteredEngine_Core PRIVATE "../../3rdParty/BGFX/bx/include/compat/mingw")
-elseif(APPLE AND NOT UNIX)
+elseif(APPLE)
     target_include_directories(ShatteredEngine_Core PRIVATE "../../3rdParty/BGFX/bx/include/compat/osx")
+elseif(UNIX)
+    add_definitions(-DSDL_VIDEO_DRIVER_X11=1)
 endif()

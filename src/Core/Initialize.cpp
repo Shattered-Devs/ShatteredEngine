@@ -102,7 +102,7 @@ void Initialize::Init_SDL2()
     SDL_GetVersion(&windowInfo.version);
     
     Logs::WriteLog(Logs::LogType::INFO, "Getting SDL Window informations...");
-    if (SDL_GetWindowWMInfo(window, &windowInfo) != SDL_TRUE)
+    if (!SDL_GetWindowWMInfo(window, &windowInfo))
     {
         Logs::WriteLog(Logs::LogType::ERR, "Impossible to get SDL Window informations !");
         return;
@@ -114,12 +114,13 @@ void Initialize::Init_BGFX(SDL_SysWMinfo pWindowInfo) {
     bgfx::renderFrame();
 
     bgfx::PlatformData _platformData;
-    _platformData.nwh = pWindowInfo.info.cocoa.window;
+    _platformData.nwh = reinterpret_cast<unsigned int *>(pWindowInfo.info.x11.window);
+    _platformData.ndt = pWindowInfo.info.x11.display;
     bgfx::setPlatformData(_platformData);
 
     bgfx::Init _init;
     _init.deviceId = BGFX_PCI_ID_NONE;
-    _init.type = bgfx::RendererType::Metal;
+    _init.type = bgfx::RendererType::Vulkan;
     _init.resolution.width = 500;
     _init.resolution.height = 500;
     _init.resolution.reset = BGFX_RESET_VSYNC;
