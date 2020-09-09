@@ -14,3 +14,7 @@
 [submodule "3rdParty/BGFX/bimg"]
 	path = 3rdParty/BGFX/bimg
 	url = https://github.com/bkaradzic/bimg.git
+[submodule "3rdParty/imgui"]
+	path = 3rdParty/imgui
+	url = https://github.com/ocornut/imgui.git
+	branch = Tags/v1.78
