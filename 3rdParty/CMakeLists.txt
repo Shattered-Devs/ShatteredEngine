@@ -1,9 +1,12 @@
 # 3rdParty CMake file
 
 # SDL2
-set(SDL_STATIC ON)
-set(SDL_SHARED OFF)
-add_subdirectory(SDL)
+if(NOT _SHATTERED_WINRT)
+    set(SDL_STATIC ON)
+    set(SDL_SHARED ON)
+
+    add_subdirectory(SDL)
+endif()
 
 # BGFX
 add_subdirectory(BGFX)

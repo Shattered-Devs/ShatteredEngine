@@ -13,6 +13,10 @@ Initialize::Initialize()
     std::locale::global(std::locale("en_US.UTF-8"));
     std::cout.imbue(std::locale());
 
+#if _SHATTERED_WINRT
+    SDL_SetHint(SDL_HINT_WINRT_HANDLE_BACK_BUTTON, "1");
+#endif
+
     Init_SDL2();
     Init_BGFX(windowInfo);
 
@@ -81,7 +85,7 @@ Initialize::~Initialize()
     std::cout << "Bye CORE !" << std::endl;
 }
 
-void Initialize::Init_SDL2()
+int Initialize::Init_SDL2()
 {
     Logs::WriteLog(Logs::LogType::INFO, "Initializing the Engine...");
     
@@ -94,7 +98,7 @@ void Initialize::Init_SDL2()
     if (window == nullptr)
     {
         Logs::WriteLog(Logs::LogType::ERR, "Impossible to create the SDL Window !");
-        return;
+        return 1;
     }
     Logs::WriteLog(Logs::LogType::INFO, "SDL Window has been created !");
     
@@ -105,22 +109,23 @@ void Initialize::Init_SDL2()
     if (!SDL_GetWindowWMInfo(window, &windowInfo))
     {
         Logs::WriteLog(Logs::LogType::ERR, "Impossible to get SDL Window informations !");
-        return;
+        return 1;
     }
     Logs::WriteLog(Logs::LogType::INFO, "SDL Window informations was successfully get !");
+
+    return 0;
 }
 
 void Initialize::Init_BGFX(SDL_SysWMinfo pWindowInfo) {
     bgfx::renderFrame();
 
     bgfx::PlatformData _platformData;
-    _platformData.nwh = reinterpret_cast<unsigned int *>(pWindowInfo.info.x11.window);
-    _platformData.ndt = pWindowInfo.info.x11.display;
+    _platformData.nwh = pWindowInfo.info.winrt.window;
     bgfx::setPlatformData(_platformData);
 
     bgfx::Init _init;
     _init.deviceId = BGFX_PCI_ID_NONE;
-    _init.type = bgfx::RendererType::Vulkan;
+    _init.type = bgfx::RendererType::Direct3D12;
     _init.resolution.width = 500;
     _init.resolution.height = 500;
     _init.resolution.reset = BGFX_RESET_VSYNC;

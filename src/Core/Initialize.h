@@ -19,7 +19,7 @@ namespace ShatteredEngine_Core
     class Initialize
     {
         private:
-        void Init_SDL2();
+        int Init_SDL2();
         static void Init_BGFX(SDL_SysWMinfo pWindowInfo);
 
         static void Destroy_BGFX();

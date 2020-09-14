@@ -5,14 +5,24 @@ add_subdirectory(Core)
 # Utils
 add_subdirectory(Utils)
 
-
-add_executable(ShatteredEngine main.cpp)
+if(_SHATTERED_WINRT)
+    add_executable(ShatteredEngine WIN32 main.cpp "../libs/UWP/x64/SDL2.dll")
+else()
+    add_executable(ShatteredEngine main.cpp)
+endif()
 
 # Force C++ 17 Standard
 set_property(TARGET ShatteredEngine PROPERTY CXX_STANDARD 17)
 
 if(MSVC)
-    target_link_libraries(ShatteredEngine "ShatteredEngine_Core" "ShatteredEngine_Utils" "SDL2" "SDL2main" "bx" "bimg" "bgfx" "gdi32" "kernel32" "psapi")
+    if(_SHATTERED_WINRT)
+        # SDL2 Includes for WinRT App
+        target_include_directories(ShatteredEngine PUBLIC "../3rdParty/SDL/include")
+        target_link_directories(ShatteredEngine PUBLIC "../libs/UWP/x64")
+        target_link_libraries(ShatteredEngine "ShatteredEngine_Core" "ShatteredEngine_Utils" "SDL2" "bx" "bimg" "bgfx" "gdi32" "kernel32" "psapi")
+    else()
+        target_link_libraries(ShatteredEngine "ShatteredEngine_Core" "ShatteredEngine_Utils" "SDL2-static" "bx" "bimg" "bgfx" "gdi32" "kernel32" "psapi")
+    endif()
 elseif(APPLE)
     set(macOS_Libraries "-framework QuartzCore" "-framework Metal" "-framework IOKit" "-framework CoreVideo" "-framework Foundation")
     target_link_libraries(ShatteredEngine "ShatteredEngine_Core" "ShatteredEngine_Utils" "SDL2" "SDL2main" "bx" "bimg" "bgfx" ${macOS_Libraries})

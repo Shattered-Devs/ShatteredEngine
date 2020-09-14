@@ -4,14 +4,16 @@ using namespace ShatteredEngine_Utils;
 
 void Logs::WriteLog(Logs::LogType pType, char const *pMessage)
 {
+#ifndef _SHATTERED_WINRT
     auto _time = std::chrono::system_clock::now();
 
     std::time_t _time_t = std::chrono::system_clock::to_time_t(_time);
 
-    char *_stringTime = std::ctime(&_time_t);
-    
+    char* _stringTime = std::ctime(&_time_t);
+
     // Remove \n of the string
     _stringTime[strcspn(_stringTime, "\r\n")] = '\0';
+
 
     // [Time] - [LogType]: Message
     switch (pType)
@@ -26,4 +28,5 @@ void Logs::WriteLog(Logs::LogType pType, char const *pMessage)
         std::cout << termcolor::white << "[" << termcolor::red << _stringTime << termcolor::white << "] - [" << termcolor::red << "ERROR" << termcolor::white << "]: " << termcolor::red << pMessage << termcolor::reset << std::endl;
         break;
     }
+#endif
 }
