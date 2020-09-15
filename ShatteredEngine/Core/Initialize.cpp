@@ -120,7 +120,7 @@ void Initialize::Init_BGFX(SDL_SysWMinfo pWindowInfo) {
     bgfx::renderFrame();
 
     bgfx::PlatformData _platformData;
-    _platformData.nwh = pWindowInfo.info.winrt.window;
+    _platformData.nwh = pWindowInfo.info.win.window;
     bgfx::setPlatformData(_platformData);
 
     bgfx::Init _init;

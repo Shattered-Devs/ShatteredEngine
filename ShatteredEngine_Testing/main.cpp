@@ -1,5 +1,5 @@
 #include <memory>
-#include "Core/Initialize.h"
+#include <Core/Initialize.h>
 
 #ifdef _SHATTERED_WINRT
 #include <SDL.h>

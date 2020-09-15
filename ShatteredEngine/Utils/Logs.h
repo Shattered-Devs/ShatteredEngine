@@ -7,7 +7,7 @@
 #include <chrono>
 #include <string>
 #include <cstring>
-#include "../../3rdParty/termcolor/include/termcolor/termcolor.hpp"
+#include <termcolor/termcolor.hpp>
 
 namespace ShatteredEngine_Utils
 {

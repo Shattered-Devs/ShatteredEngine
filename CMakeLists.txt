@@ -1,6 +1,6 @@
 # The main CMake file of ShatteredEngine
 cmake_minimum_required(VERSION "3.0")
-project(ShatteredEngine)
+project(ShatteredEngine_Testing)
 
 # Detect WinRT
 if(CMAKE_SYSTEM_NAME MATCHES "WindowsStore")
@@ -13,4 +13,7 @@ endif()
 add_subdirectory(3rdParty)
 
 # Source Code
-add_subdirectory(src)
+add_subdirectory(ShatteredEngine)
+
+# Testing Project
+add_subdirectory(ShatteredEngine_Testing)
