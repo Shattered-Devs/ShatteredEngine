@@ -1,7 +1,7 @@
 #include <memory>
 #include "Core/Initialize.h"
 
-#if _SHATTERED_WINRT
+#ifdef _SHATTERED_WINRT
 #include <SDL.h>
 #include <windows.h>
 
