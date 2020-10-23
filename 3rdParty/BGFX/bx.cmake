@@ -5,7 +5,7 @@ add_definitions(-D__STDC_FORMAT_MACROS)
 
 set(includes "bx/include" "bx/3rdparty")
 
-file(GLOB sources "bx/include/bx/*.h" "bx/include/bx/inline/*.inl" "bx/src/*.cpp" "bx/src/bx_p.h")
+file(GLOB sources "bx/include/bx/*.h" "bx/include/bx/inline/*.inl" "bx/src/*.cpp" "bx/src/bx_p.h" "bx/scripts/*.natvis")
 get_filename_component(full_path_sources "bx/src" ABSOLUTE)
 list(REMOVE_ITEM sources "${full_path_sources}/amalgamated.cpp" "${full_path_sources}/crtnone.cpp")
 

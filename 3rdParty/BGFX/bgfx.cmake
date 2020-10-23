@@ -5,7 +5,7 @@ add_definitions(-D__STDC_FORMAT_MACROS)
 
 set(includes "bx/include" "bimg/include" "bgfx/include" "bgfx/3rdparty" "bgfx/3rdparty/dxsdk/include" "bgfx/3rdparty/khronos")
 
-file(GLOB sources "bgfx/include/bgfx/*.h" "bgfx/src/*.cpp" "bgfx/src/*.h")
+file(GLOB sources "bgfx/include/bgfx/*.h" "bgfx/src/*.cpp" "bgfx/src/*.h" "bgfx/scripts/*.natvis")
 get_filename_component(full_path_sources "bgfx/src" ABSOLUTE)
 list(REMOVE_ITEM sources "${full_path_sources}/amalgamated.cpp" "${full_path_sources}/amalgamated.mm")
 
