@@ -9,10 +9,6 @@ SDL_Event event;
 
 Initialize::Initialize()
 {
-    std::setlocale(LC_ALL, "en_US.UTF-8");
-    std::locale::global(std::locale("en_US.UTF-8"));
-    std::cout.imbue(std::locale());
-
 #if _SHATTERED_WINRT
     SDL_SetHint(SDL_HINT_WINRT_HANDLE_BACK_BUTTON, "1");
 #endif
@@ -120,12 +116,20 @@ void Initialize::Init_BGFX(SDL_SysWMinfo pWindowInfo) {
     bgfx::renderFrame();
 
     bgfx::PlatformData _platformData;
+#if _SHATTERED_WINRT
+    _platformData.nwh = pWindowInfo.info.winrt.window;
+#elif _SHATTERED_MSVC || _SHATTERED_MINGW
     _platformData.nwh = pWindowInfo.info.win.window;
+#endif
     bgfx::setPlatformData(_platformData);
 
     bgfx::Init _init;
     _init.deviceId = BGFX_PCI_ID_NONE;
+#if _SHATTERED_WINRT
     _init.type = bgfx::RendererType::Direct3D12;
+#elif _SHATTERED_MSVC || _SHATTERED_MINGW
+    _init.type = bgfx::RendererType::Direct3D11;
+#endif
     _init.resolution.width = 500;
     _init.resolution.height = 500;
     _init.resolution.reset = BGFX_RESET_VSYNC;

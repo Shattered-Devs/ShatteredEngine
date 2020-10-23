@@ -4,7 +4,7 @@ using namespace ShatteredEngine_Utils;
 
 void Logs::WriteLog(Logs::LogType pType, char const *pMessage)
 {
-#ifndef _SHATTERED_WINRT
+#ifndef _SHATTERED_WINRT || _SHATTERED_WIN32
     auto _time = std::chrono::system_clock::now();
 
     std::time_t _time_t = std::chrono::system_clock::to_time_t(_time);
