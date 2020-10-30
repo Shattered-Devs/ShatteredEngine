@@ -1,8 +1,8 @@
+#include <SDL.h>
 #include <memory>
 #include <Core/Initialize.h>
 
-#ifdef _SHATTERED_WINRT
-#include <SDL.h>
+#if _SHATTERED_WINRT
 #include <windows.h>
 
 int fake_main(int argc, char** argv);
@@ -26,6 +26,8 @@ int fake_main(int argc, char** argv)
 }
 
 int real_main(int argc, char** argv)
+#elif _SHATTERED_WIN32 || _SHATTERED_MINGW
+int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
 #else
 int main(int argc, char** argv)
 #endif

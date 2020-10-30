@@ -11,14 +11,12 @@ endif()
 # Force C++ 17 Standard
 set_property(TARGET ShatteredEngine_Testing PROPERTY CXX_STANDARD 17)
 
-target_include_directories(ShatteredEngine_Testing PUBLIC "../ShatteredEngine/")
+target_include_directories(ShatteredEngine_Testing PUBLIC "../ShatteredEngine" PUBLIC "../3rdParty/termcolor/include" PUBLIC "../3rdParty/SDL/include")
 
-if(_SHATTERED_MSVC AND NOT _SHATTERED_WINRT)
+if((_SHATTERED_MSVC OR _SHATTERED_MINGW) AND NOT _SHATTERED_WINRT)
     target_link_libraries(ShatteredEngine_Testing "ShatteredEngine" "SDL2-static" "SDL2main" "bx" "bimg" "bgfx" "gdi32" "kernel32" "psapi")
 endif()
 if(_SHATTERED_WINRT)
-    # SDL2 Includes for WinRT App
-    target_include_directories(ShatteredEngine_Testing PUBLIC "../3rdParty/SDL/include")
     target_link_directories(ShatteredEngine_Testing PUBLIC "../libs/UWP/x64")
     target_link_libraries(ShatteredEngine_Testing "ShatteredEngine" "SDL2" "gdi32" "kernel32" "psapi")
     set_property(SOURCE "../libs/UWP/x64/SDL2.dll" PROPERTY VS_DEPLOYMENT_CONTENT 1)
