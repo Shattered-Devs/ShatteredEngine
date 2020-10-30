@@ -1,7 +1,16 @@
+option(_SHATTERED_DEBUG "Activate Debug Build" ON)
 option(_SHATTERED_WIN32 "(MinGW or MSVC ONLY) Enable Win32 Project" OFF)
 option(_SHATTERED_WINRT "(MSVC ONLY) Enable UWP Project" OFF)
 option(_SHATTERED_VULKAN "(Linux ONLY) Enable Vulkan Renderer" OFF)
 
+
+# Enable DEBUG
+if(_SHATTERED_DEBUG)
+    set(CMAKE_BUILD_TYPE "Debug")
+    add_definitions(-D_SHATTERED_DEBUG)
+else()
+    set(CMAKE_BUILD_TYPE "Release")
+endif()
 
 # Enable UWP
 if(_SHATTERED_WINRT)
