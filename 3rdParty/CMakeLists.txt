@@ -3,7 +3,7 @@
 # SDL2
 if(NOT _SHATTERED_WINRT)
     set(SDL_STATIC ON)
-    set(SDL_SHARED ON)
+    set(SDL_SHARED OFF)
 
     add_subdirectory(SDL)
 endif()
