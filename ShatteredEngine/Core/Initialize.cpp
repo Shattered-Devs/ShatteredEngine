@@ -120,6 +120,8 @@ void Initialize::Init_BGFX(SDL_SysWMinfo pWindowInfo) {
     _platformData.nwh = pWindowInfo.info.winrt.window;
 #elif _SHATTERED_MSVC || _SHATTERED_MINGW
     _platformData.nwh = pWindowInfo.info.win.window;
+#elif _SHATTERED_APPLE
+    _platformData.nwh = pWindowInfo.info.cocoa.window;
 #endif
     bgfx::setPlatformData(_platformData);
 
@@ -129,6 +131,8 @@ void Initialize::Init_BGFX(SDL_SysWMinfo pWindowInfo) {
     _init.type = bgfx::RendererType::Direct3D12;
 #elif _SHATTERED_MSVC || _SHATTERED_MINGW
     _init.type = bgfx::RendererType::Direct3D11;
+#elif _SHATTERED_APPLE
+    _init.type = bgfx::RendererType::Metal;
 #endif
     _init.resolution.width = 500;
     _init.resolution.height = 500;
