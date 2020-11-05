@@ -57,7 +57,7 @@ Initialize::Initialize()
 
     const bgfx::ViewId _clearView = 0;
     bgfx::setViewClear(_clearView, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0x6495EDFF, 1.0f, 0);
-    bgfx::setViewRect(_clearView, 10, 10, 100, 100);
+    bgfx::setViewRect(_clearView, 0, 0, 500, 500);
     
     // TEMP !!!
     while (true)
@@ -122,6 +122,12 @@ void Initialize::Init_BGFX(SDL_SysWMinfo pWindowInfo) {
     _platformData.nwh = pWindowInfo.info.win.window;
 #elif _SHATTERED_APPLE
     _platformData.nwh = pWindowInfo.info.cocoa.window;
+#elif _SHATTERED_UNIX && _SHATTERED_WAYLAND
+    _platformData.ndt = pWindowInfo.info.wl.display;
+    _platformData.nwh = (void*)(uintptr_t)pWindowInfo.info.wl.surface;
+#elif _SHATTERED_UNIX && _SHATTERED_X11
+    _platformData.ndt = pWindowInfo.info.x11.display;
+    _platformData.nwh = (void*)(uintptr_t)pWindowInfo.info.x11.window;
 #endif
     bgfx::setPlatformData(_platformData);
 
@@ -133,6 +139,10 @@ void Initialize::Init_BGFX(SDL_SysWMinfo pWindowInfo) {
     _init.type = bgfx::RendererType::Direct3D11;
 #elif _SHATTERED_APPLE
     _init.type = bgfx::RendererType::Metal;
+#elif _SHATTERED_UNIX && _SHATTERED_VULKAN
+    _init.type = bgfx::RendererType::Vulkan;
+#elif _SHATTERED_UNIX
+    _init.type = bgfx::RendererType::OpenGL;
 #endif
     _init.resolution.width = 500;
     _init.resolution.height = 500;

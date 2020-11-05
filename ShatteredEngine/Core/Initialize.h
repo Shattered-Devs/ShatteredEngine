@@ -2,7 +2,7 @@
 #define CORE_INITIALIZE_H
 
 // Hack for X11
-#if BX_PLATFORM_LINUX || BX_PLATFORM_BSD
+#if _SHATTERED_X11
 #define SDL_VIDEO_DRIVER_X11 1
 #endif
 
