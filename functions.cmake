@@ -1,3 +1,4 @@
+# Search Libs
 function(search_libs target_name)
 	if(_SHATTERED_WINDOWS_X86)
 		target_link_directories(${target_name} PUBLIC "../libs/Windows/x86")
@@ -8,6 +9,7 @@ function(search_libs target_name)
 	endif()
 endfunction()
 
+# Copy DLLS
 function(copy_dlls target_name)
     ### COPY DLLS ###
     # Windows
