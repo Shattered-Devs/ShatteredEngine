@@ -11,14 +11,6 @@ set_property(TARGET bimg PROPERTY CXX_STANDARD 14)
 
 target_include_directories(bimg PUBLIC ${includes})
 
-if(_SHATTERED_MSVC)
-	target_include_directories(bimg PRIVATE "bx/include/compat/msvc")
-endif()
-if(_SHATTERED_MINGW)
-	target_include_directories(bimg PRIVATE "bx/include/compat/mingw")
-endif()
-if(_SHATTERED_APPLE)
-	target_include_directories(bimg PRIVATE "bx/include/compat/osx")
-endif()
+BX_DEPS(bimg)
 
 target_link_libraries(bimg PUBLIC "bx")

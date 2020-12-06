@@ -21,14 +21,11 @@ endif()
 
 target_include_directories(bgfx PUBLIC ${includes})
 
+BX_DEPS(bgfx)
+
 if(_SHATTERED_MSVC)
 	add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 	target_include_directories(bgfx PUBLIC "bgfx/3rdparty/dxsdk/include")
-	target_include_directories(bgfx PRIVATE "bx/include/compat/msvc")
-endif()
-
-if(_SHATTERED_MINGW)
-	target_include_directories(bgfx PRIVATE "bx/include/compat/mingw")
 endif()
 
 if(_SHATTERED_APPLE)
@@ -44,8 +41,6 @@ if(_SHATTERED_APPLE)
 	mark_as_advanced(METAL_LIBRARY)
 	mark_as_advanced(METALKIT_LIBRARY)
 	target_link_libraries(bgfx PUBLIC ${METALKIT_LIBRARY} PUBLIC ${OPENGL_LIBRARY} PUBLIC ${COCOA_LIBRARY} PUBLIC ${METAL_LIBRARY} PUBLIC ${QUARTZCORE_LIBRARY})
-
-	target_include_directories(bgfx PRIVATE "bx/include/compat/osx")
 endif()
 
 target_link_libraries(bgfx PUBLIC "bx" PUBLIC "bimg")

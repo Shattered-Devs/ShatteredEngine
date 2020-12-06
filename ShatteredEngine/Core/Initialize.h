@@ -9,8 +9,8 @@
 #include <iostream>
 #include <clocale>
 #include "../Utils/Logs.h"
-#include <SDL.h>
-#include <SDL_syswm.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_syswm.h>
 #include <bgfx/bgfx.h>
 #include <bgfx/platform.h>
 
