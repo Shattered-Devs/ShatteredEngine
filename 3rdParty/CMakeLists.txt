@@ -1,4 +1,4 @@
 # 3rdParty CMake file
 
-# BGFX
-add_subdirectory(BGFX)
+# GLAD
+add_subdirectory(GLAD)
