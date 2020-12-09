@@ -9,7 +9,7 @@
 #include <cstring>
 #include <termcolor/termcolor.hpp>
 
-namespace ShatteredEngine_Utils
+namespace ShatteredEngine::Utils
 {
     class Logs
     {
@@ -21,8 +21,8 @@ namespace ShatteredEngine_Utils
         ERR
     };
 
-    static void WriteLog(Logs::LogType pType, char const *pMessage);
-    };    
+    static void WriteLog(Logs::LogType pType, std::string pMessage);
+    };
 }
 
 #endif //UTILS_LOGS_H

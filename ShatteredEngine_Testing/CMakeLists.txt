@@ -1,9 +1,9 @@
 project(ShatteredEngine_Testing)
 
 if(_SHATTERED_WIN32 OR _SHATTERED_WINRT)
-    add_executable(ShatteredEngine_Testing WIN32 main.cpp)
+    add_executable(ShatteredEngine_Testing WIN32 "main.cpp" "MainGame.h" "MainGame.cpp")
 else()
-    add_executable(ShatteredEngine_Testing main.cpp)
+    add_executable(ShatteredEngine_Testing "main.cpp" "MainGame.h" "MainGame.cpp")
 endif()
 
 # Force C++ 17 Standard

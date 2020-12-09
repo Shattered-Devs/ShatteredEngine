@@ -1,6 +1,9 @@
 #include <SDL/SDL.h>
 #include <memory>
-#include <Core/Initialize.h>
+#include "MainGame.h"
+#include "Utils/Logs.h"
+
+using namespace ShatteredEngine::Utils;
 
 #if _SHATTERED_WINRT
 #include <windows.h>
@@ -32,7 +35,8 @@ int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 int main(int argc, char** argv)
 #endif
 {
-    std::unique_ptr<ShatteredEngine_Core::Initialize> _initialize = std::make_unique<ShatteredEngine_Core::Initialize>();
+    Logs::WriteLog(Logs::LogType::INFO, "Initialization of the Engine.");
+    std::unique_ptr<MainGame> game = std::make_unique<MainGame>("Hello Shattered Engine NEXT !");
 
     return 0;
 }
