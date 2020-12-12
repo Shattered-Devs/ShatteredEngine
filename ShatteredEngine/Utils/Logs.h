@@ -21,7 +21,7 @@ namespace ShatteredEngine::Utils
         ERR
     };
 
-    static void WriteLog(Logs::LogType pType, std::string pMessage);
+    static void WriteLog(Logs::LogType pType, std::wstring pMessage);
     };
 }
 

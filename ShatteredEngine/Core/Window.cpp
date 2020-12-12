@@ -24,8 +24,9 @@
 #include "Window.h"
 
 namespace ShatteredEngine::Core {
-    Window::Window(std::string pWindowName) {
-        this->_window = SDL_CreateWindow(pWindowName.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 500, 500, SDL_WINDOW_RESIZABLE);
+    Window::Window(std::string pWindowName)
+	{
+    	this->_window = SDL_CreateWindow(pWindowName.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 500, 500, SDL_WINDOW_RESIZABLE);
     }
 
     Window::~Window() {

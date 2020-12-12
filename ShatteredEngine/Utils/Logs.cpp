@@ -1,7 +1,7 @@
 #include "Logs.h"
 
 namespace ShatteredEngine::Utils {
-    void Logs::WriteLog(Logs::LogType pType, std::string pMessage) {
+    void Logs::WriteLog(Logs::LogType pType, const std::wstring pMessage) {
 #if _SHATTERED_DEBUG
         auto _time = std::chrono::system_clock::now();
 
@@ -17,19 +17,21 @@ namespace ShatteredEngine::Utils {
         switch (pType) {
             case LogType::INFO:
                 std::cout << termcolor::white << "[" << termcolor::green << _stringTime << termcolor::white << "] - ["
-                          << termcolor::green << "INFO" << termcolor::white << "]: " << termcolor::green << pMessage
-                          << termcolor::reset << std::endl;
+					      << termcolor::green << "INFO" << termcolor::white << "]: " << termcolor::green;
+                std::wcout << pMessage;
+                std::cout << termcolor::reset << std::endl;
                 break;
             case LogType::WARN:
                 std::cout << termcolor::white << "[" << termcolor::yellow << _stringTime << termcolor::white << "] - ["
-                          << termcolor::yellow << "WARNING" << termcolor::white << "]: " << termcolor::yellow
-                          << pMessage
-                          << termcolor::reset << std::endl;
+						  << termcolor::yellow << "WARNING" << termcolor::white << "]: " << termcolor::yellow;
+                std::wcout << pMessage;
+                std::cout << termcolor::reset << std::endl;
                 break;
             case LogType::ERR:
                 std::cout << termcolor::white << "[" << termcolor::red << _stringTime << termcolor::white << "] - ["
-                          << termcolor::red << "ERROR" << termcolor::white << "]: " << termcolor::red << pMessage
-                          << termcolor::reset << std::endl;
+						  << termcolor::red << "ERROR" << termcolor::white << "]: " << termcolor::red;
+                std::wcout << pMessage;
+                std::cout << termcolor::reset << std::endl;
                 break;
         }
 #endif
