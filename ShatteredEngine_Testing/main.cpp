@@ -35,7 +35,7 @@ int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 int main(int argc, char** argv)
 #endif
 {
-    Logs::WriteLog(Logs::LogType::INFO, "Initialization of the Engine.");
+    Logs::WriteLog(Logs::LogType::INFO, L"Initialization of the Engine.");
     std::unique_ptr<MainGame> game = std::make_unique<MainGame>("Hello Shattered Engine NEXT !");
     game->run();
 

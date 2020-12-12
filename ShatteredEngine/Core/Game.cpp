@@ -25,6 +25,7 @@
 
 namespace ShatteredEngine::Core {
     Game::Game(std::string pWindowName) {
+        std::setlocale(LC_ALL, ".UTF-8");
         SDL_Init(SDL_INIT_EVERYTHING);
 
         this->window = std::make_unique<Window>(pWindowName);
@@ -36,24 +37,33 @@ namespace ShatteredEngine::Core {
 
     void Game::run()
     {
+        this->initialize();
         while (true) {
             SDL_PollEvent(&this->event);
 
             if (this->event.type == SDL_QUIT) {
                 break;
             }
+
+            this->update();
+            this->render();
         }
+        this->shutdown();
     }
 
-    void Game::initialize() {
+	void Game::initialize()
+	{
+	}
 
-    }
+	void Game::update()
+	{
+	}
 
-    void Game::update() {
-    	
-    }
+	void Game::render()
+	{
+	}
 
-    void Game::render() {
-
+    void Game::shutdown()
+    {
     }
 }

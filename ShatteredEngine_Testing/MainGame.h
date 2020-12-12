@@ -24,7 +24,6 @@
 #ifndef SHATTEREDENGINE_TESTING_MAINGAME_H
 #define SHATTEREDENGINE_TESTING_MAINGAME_H
 
-#include <utility>
 #include <Core/Game.h>
 #include "Utils/Logs.h"
 
@@ -33,9 +32,10 @@ public:
     MainGame(std::string pWindowName);
     ~MainGame();
 
-    void Initialize();
-    void Update();
-    void Render();
+    void initialize() override;
+    void update() override;
+    void render() override;
+	void shutdown() override;
 };
 
 

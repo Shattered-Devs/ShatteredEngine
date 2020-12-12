@@ -29,15 +29,22 @@ MainGame::MainGame(std::string pWindowName) : Game(std::move(pWindowName)) {
 
 MainGame::~MainGame() = default;
 
-void MainGame::Initialize() {
+void MainGame::initialize()
+{
 
 }
 
-void MainGame::Update() {
-    ShatteredEngine::Utils::Logs::WriteLog(ShatteredEngine::Utils::Logs::LogType::WARN, "Test !!!");
+void MainGame::update()
+{
 
 }
 
-void MainGame::Render() {
+void MainGame::render()
+{
 
+}
+
+void MainGame::shutdown()
+{
+	ShatteredEngine::Utils::Logs::WriteLog(ShatteredEngine::Utils::Logs::LogType::INFO, L"Game Engine Shutdown detected !");
 }

@@ -26,6 +26,8 @@
 
 #include <memory>
 #include <string>
+#include <clocale>
+#include <locale.h>
 #include "Window.h"
 
 
@@ -42,9 +44,10 @@ namespace ShatteredEngine::Core {
 
         void run();
 
-        void initialize();
-        void update();
-        void render();
+        virtual void initialize();
+        virtual void update();
+        virtual void render();
+        virtual void shutdown();
     };
 }
 
