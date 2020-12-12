@@ -31,7 +31,7 @@
 
 namespace ShatteredEngine::Core {
     class Game {
-    protected:
+    public:
         SDL_Event event;
 
         std::unique_ptr<Window> window;
@@ -40,10 +40,11 @@ namespace ShatteredEngine::Core {
 
         ~Game();
 
+        void run();
 
-        void Initialize();
-        void Update();
-        void Render();
+        void initialize();
+        void update();
+        void render();
     };
 }
 

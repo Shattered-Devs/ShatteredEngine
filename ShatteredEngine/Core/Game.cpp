@@ -28,31 +28,32 @@ namespace ShatteredEngine::Core {
         SDL_Init(SDL_INIT_EVERYTHING);
 
         this->window = std::make_unique<Window>(pWindowName);
-
-        Initialize();
     }
 
     Game::~Game() {
         SDL_Quit();
     }
 
-    void Game::Initialize() {
+    void Game::run()
+    {
         while (true) {
             SDL_PollEvent(&this->event);
 
             if (this->event.type == SDL_QUIT) {
                 break;
             }
-
-            Update();
         }
     }
 
-    void Game::Update() {
-        Render();
+    void Game::initialize() {
+
     }
 
-    void Game::Render() {
+    void Game::update() {
+    	
+    }
+
+    void Game::render() {
 
     }
 }
