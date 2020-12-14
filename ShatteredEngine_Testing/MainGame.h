@@ -25,7 +25,7 @@
 #define SHATTEREDENGINE_TESTING_MAINGAME_H
 
 #include <Core/Game.h>
-#include "Utils/Logs.h"
+#include <Utils/Logs.h>
 
 class MainGame : public ShatteredEngine::Core::Game {
 public:
