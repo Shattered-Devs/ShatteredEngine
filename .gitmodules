@@ -1,15 +1,6 @@
 [submodule "3rdParty/termcolor"]
 	path = 3rdParty/termcolor
 	url = https://github.com/ikalnytskyi/termcolor.git
-[submodule "3rdParty/BGFX/bgfx"]
-	path = 3rdParty/BGFX/bgfx
-	url = https://github.com/bkaradzic/bgfx.git
-[submodule "3rdParty/BGFX/bx"]
-	path = 3rdParty/BGFX/bx
-	url = https://github.com/bkaradzic/bx.git
-[submodule "3rdParty/BGFX/bimg"]
-	path = 3rdParty/BGFX/bimg
-	url = https://github.com/bkaradzic/bimg.git
 [submodule "3rdParty/imgui"]
 	path = 3rdParty/imgui
 	url = https://github.com/ocornut/imgui.git
