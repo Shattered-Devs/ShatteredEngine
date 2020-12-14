@@ -28,6 +28,9 @@
 #include <string>
 #include <clocale>
 #include <locale.h>
+#include <bgfx/c99/bgfx.h>
+#include <SDL/SDL_syswm.h>
+
 #include "Window.h"
 
 

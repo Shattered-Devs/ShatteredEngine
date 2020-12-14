@@ -50,7 +50,9 @@ namespace ShatteredEngine::Core {
         SDL_SetWindowSize(_window, pRectangle->Size->X, pRectangle->Size->Y);
     }
 
-    SDL_Window* Window::get_window_context() {
-        return this->_window;
+    SDL_SysWMinfo Window::get_window_context() {
+        SDL_VERSION(&_windowHandle.version);
+        SDL_GetWindowWMInfo(_window, &_windowHandle);
+        return this->_windowHandle;
     }
 }
