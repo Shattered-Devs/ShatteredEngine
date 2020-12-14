@@ -1,35 +1,45 @@
+//
+// Shattered Engine
+//
+// Copyright (c) 2020 John (Linuxydable) Benard
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.c
+//
+
 #include "Logs.h"
 
 namespace ShatteredEngine::Utils {
     void Logs::WriteLog(Logs::LogType pType, const std::wstring pMessage) {
 #if _SHATTERED_DEBUG
-        auto _time = std::chrono::system_clock::now();
-
-        std::time_t _time_t = std::chrono::system_clock::to_time_t(_time);
-
-        char *_stringTime = std::ctime(&_time_t);
-
-        // Remove \n of the string
-        _stringTime[strcspn(_stringTime, "\r\n")] = '\0';
-
-
         // [Time] - [LogType]: Message
         switch (pType) {
             case LogType::INFO:
-                std::cout << termcolor::white << "[" << termcolor::green << _stringTime << termcolor::white << "] - ["
-					      << termcolor::green << "INFO" << termcolor::white << "]: " << termcolor::green;
+                std::cout << termcolor::white << "[" << termcolor::green << "INFO" << termcolor::white << "]: " << termcolor::green;
                 std::wcout << pMessage;
                 std::cout << termcolor::reset << std::endl;
                 break;
             case LogType::WARN:
-                std::cout << termcolor::white << "[" << termcolor::yellow << _stringTime << termcolor::white << "] - ["
-						  << termcolor::yellow << "WARNING" << termcolor::white << "]: " << termcolor::yellow;
+                std::cout << termcolor::white << "[" << termcolor::yellow << "WARNING" << termcolor::white << "]: " << termcolor::yellow;
                 std::wcout << pMessage;
                 std::cout << termcolor::reset << std::endl;
                 break;
             case LogType::ERR:
-                std::cout << termcolor::white << "[" << termcolor::red << _stringTime << termcolor::white << "] - ["
-						  << termcolor::red << "ERROR" << termcolor::white << "]: " << termcolor::red;
+                std::cout << termcolor::white << "[" << termcolor::red << "ERROR" << termcolor::white << "]: " << termcolor::red;
                 std::wcout << pMessage;
                 std::cout << termcolor::reset << std::endl;
                 break;
