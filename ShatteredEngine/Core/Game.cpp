@@ -26,7 +26,7 @@
 const bgfx_view_id_t viewID = 0;
 
 namespace ShatteredEngine::Core {
-    Game::Game(std::string pWindowName) {
+    Game::Game(std::string pWindowName, bgfx_renderer_type renderer) {
         std::setlocale(LC_ALL, ".UTF-8");
         SDL_Init(SDL_INIT_EVERYTHING);
 
@@ -37,7 +37,7 @@ namespace ShatteredEngine::Core {
         bgfx_init_t init;
         bgfx_init_ctor(&init);
 
-        init.type = BGFX_RENDERER_TYPE_DIRECT3D11;
+        init.type = renderer;
 #if _SHATTERED_WINRT
         init.platformData.nwh = window->get_window_context().info.winrt.window;
 #elif _SHATTERED_WINDOWS

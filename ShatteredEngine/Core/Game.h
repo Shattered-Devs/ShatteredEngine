@@ -41,7 +41,7 @@ namespace ShatteredEngine::Core {
 
         std::unique_ptr<Window> window;
 
-        Game(std::string pWindowName);
+        Game(std::string pWindowName, bgfx_renderer_type renderer);
 
         ~Game();
 
