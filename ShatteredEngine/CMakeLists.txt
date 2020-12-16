@@ -11,4 +11,4 @@ target_include_directories(ShatteredEngine PUBLIC "../include" PUBLIC "../3rdPar
 
 SEARCH_LIBS(ShatteredEngine)
 
-target_link_libraries(ShatteredEngine PUBLIC "SDL2")
+target_link_libraries(ShatteredEngine PUBLIC "SDL2" PUBLIC "bgfx-shared-libRelease")
