@@ -55,4 +55,8 @@ namespace ShatteredEngine::Core {
         SDL_GetWindowWMInfo(_window, &_windowHandle);
         return this->_windowHandle;
     }
+
+    SDL_Window* Window::get_window() {
+        return this->_window;
+    }
 }

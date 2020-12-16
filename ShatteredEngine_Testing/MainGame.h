@@ -29,7 +29,7 @@
 
 class MainGame : public ShatteredEngine::Core::Game {
 public:
-    MainGame(std::string pWindowName, bgfx_renderer_type renderer);
+    MainGame(std::string pWindowName);
     ~MainGame();
 
     void initialize() override;

@@ -56,6 +56,8 @@ namespace ShatteredEngine::Core {
         void set_window_rectangle(std::unique_ptr<ShatteredEngine::Geometry::Rectangle> pRectangle);
 
         SDL_SysWMinfo get_window_context();
+
+        SDL_Window* get_window();
     };
 }
 
