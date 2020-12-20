@@ -28,8 +28,9 @@
 #include <string>
 #include <clocale>
 #include <locale.h>
-#include <bgfx/c99/bgfx.h>
-#include <SDL/SDL_syswm.h>
+#include <bgfx/bgfx.h>
+#include <bgfx/platform.h>
+#include <SDL_syswm.h>
 
 #include "Window.h"
 
@@ -41,7 +42,7 @@ namespace ShatteredEngine::Core {
 
         std::unique_ptr<Window> window;
 
-        Game(std::string pWindowName, bgfx_renderer_type renderer);
+        Game(std::string pWindowName, bgfx::RendererType::Enum renderer);
 
         ~Game();
 

@@ -11,7 +11,7 @@ endif()
 # Force C++ 17 Standard
 set_property(TARGET ShatteredEngine_Testing PROPERTY CXX_STANDARD 17)
 
-target_include_directories(ShatteredEngine_Testing PUBLIC "../ShatteredEngine" PUBLIC "../3rdParty/termcolor/include" PUBLIC "../include")
+target_include_directories(ShatteredEngine_Testing PUBLIC "../ShatteredEngine" PUBLIC "../3rdParty/termcolor/include" PUBLIC "../3rdParty/SDL/include" PUBLIC "../3rdParty/bgfx.cmake/bgfx/include")
 
 SEARCH_LIBS(ShatteredEngine_Testing)
 
