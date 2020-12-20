@@ -1,0 +1,9 @@
+[submodule "3rdParty/bgfx.cmake"]
+	path = 3rdParty/bgfx.cmake
+	url = https://github.com/Linuxydable/bgfx.cmake.git
+[submodule "3rdParty/imgui"]
+	path = 3rdParty/imgui
+	url = https://github.com/ocornut/imgui.git
+[submodule ".\\3rdParty\\termcolor"]
+	path = .\\3rdParty\\termcolor
+	url = https://github.com/ikalnytskyi/termcolor.git
