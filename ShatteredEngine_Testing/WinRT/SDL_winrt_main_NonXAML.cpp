@@ -3,7 +3,7 @@
 */
 
 #include <wrl.h>
-#include <SDL_main.h>
+#include <SDL/SDL_main.h>
 
 /* At least one file in any SDL/WinRT app appears to require compilation
    with C++/CX, otherwise a Windows Metadata file won't get created, and

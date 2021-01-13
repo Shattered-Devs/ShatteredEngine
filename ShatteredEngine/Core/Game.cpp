@@ -23,33 +23,12 @@
 
 #include "Game.h"
 
-const bgfx::ViewId viewID = 0;
-
 namespace ShatteredEngine::Core {
-    Game::Game(std::string pWindowName, bgfx::RendererType::Enum renderer) {
+    Game::Game(std::string pWindowName) {
         std::setlocale(LC_ALL, ".UTF-8");
         SDL_Init(SDL_INIT_EVERYTHING);
 
         this->window = std::make_unique<Window>(pWindowName);
-
-        bgfx::renderFrame(-1);
-
-        bgfx::Init init;
-
-        init.type = renderer;
-#if _SHATTERED_WINRT
-        init.platformData.nwh = window->get_window_context().info.winrt.window;
-#elif _SHATTERED_WINDOWS
-        init.platformData.nwh = window->get_window_context().info.win.window;
-#endif
-        init.resolution.width = 500;
-        init.resolution.height = 500;
-        init.resolution.reset = BGFX_RESET_VSYNC;
-
-        bgfx::init(init);
-
-        bgfx::setViewClear(viewID, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0x6495EDFF, 1.0f, 0);
-        bgfx::setViewRect(viewID, 0, 0, 500, 500);
     }
 
     Game::~Game() {
@@ -68,9 +47,6 @@ namespace ShatteredEngine::Core {
 
             this->update();
             this->render();
-
-            bgfx::touch(viewID);
-            bgfx::frame(true);
         }
         this->shutdown();
     }
@@ -89,6 +65,5 @@ namespace ShatteredEngine::Core {
 
     void Game::shutdown()
     {
-        bgfx::shutdown();
     }
 }

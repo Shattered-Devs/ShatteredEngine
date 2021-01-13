@@ -26,8 +26,8 @@
 
 #include <string>
 #include <memory>
-#include <SDL.h>
-#include <SDL_syswm.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_syswm.h>
 #include "../Geometry/Rectangle.h"
 
 namespace ShatteredEngine::Core {

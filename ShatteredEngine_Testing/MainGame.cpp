@@ -23,7 +23,7 @@
 
 #include "MainGame.h"
 
-MainGame::MainGame(std::string pWindowName, bgfx::RendererType::Enum renderer) : Game(std::move(pWindowName), renderer) {
+MainGame::MainGame(std::string pWindowName) : Game(std::move(pWindowName)) {
 	
 }
 

@@ -1,4 +1,4 @@
-#include <SDL.h>
+#include <SDL/SDL.h>
 #include <memory>
 #include "../MainGame.h"
 #include <Utils/Logs.h>
