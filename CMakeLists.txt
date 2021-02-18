@@ -6,9 +6,6 @@ include(options.cmake)
 
 project(ShatteredEngine_Testing)
 
-# Get target OS and ARCH
-message("Compiling Shattered Engine for OS : ${CMAKE_SYSTEM_NAME} with ARCH : ${CMAKE_SYSTEM_PROCESSOR}.")
-
 # OS Options
 include(os_detection.cmake)
 
