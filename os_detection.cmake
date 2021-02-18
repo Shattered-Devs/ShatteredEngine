@@ -57,3 +57,44 @@ int main(int argc, char **argv)
 if(_SHATTERED_X64)
 	add_definitions(-D_SHATTERED_X64)
 endif()
+
+# Check ARM compilaiton
+check_c_source_compiles("
+#if (__arm__ || _M_ARM || __TARGET_ARCH_ARM)
+int main(int argc, char **argv)
+{
+	return 0;
+}
+#endif
+" _SHATTERED_ARM)
+
+if(_SHATTERED_ARM)
+	add_definitions(-D_SHATTERED_ARM)
+endif()
+
+# Check ARM64 compilaiton
+check_c_source_compiles("
+#if (__aarch64__)
+int main(int argc, char **argv)
+{
+	return 0;
+}
+#endif
+" _SHATTERED_ARM64)
+
+if(_SHATTERED_ARM64)
+	add_definitions(-D_SHATTERED_ARM64)
+endif()
+
+# Print a message with the compilation informations
+if(_SHATTERED_X86)
+	message("Building the Engine for x86 CPU ARCH.")
+elseif(_SHATTERED_X64)
+	message("Building the Engine for x64 CPU ARCH.")
+elseif(_SHATTERED_ARM)
+	message("Building the Engine for ARM CPU ARCH.")
+elseif(_SHATTERED_ARM64)
+	message("Building the Engine for ARM64 CPU ARCH.")
+else()
+	message("Building the Engine for UNKNOWN CPU ARCH.")
+endif()
