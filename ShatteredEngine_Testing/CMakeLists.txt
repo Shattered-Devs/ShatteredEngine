@@ -16,10 +16,10 @@ target_include_directories(ShatteredEngine_Testing PUBLIC "../ShatteredEngine" P
 SEARCH_LIBS(ShatteredEngine_Testing)
 
 if((_SHATTERED_MSVC OR _SHATTERED_MINGW) AND NOT _SHATTERED_WINRT)
-    target_link_libraries(ShatteredEngine_Testing "ShatteredEngine" "SDL2" "SDL2main" "gdi32" "kernel32" "psapi" "user32" "gdi32" "winmm" "imm32" "ole32" "oleaut32" "version" "uuid" "advapi32" "setupapi" "shell32")
+    target_link_libraries(ShatteredEngine_Testing "ShatteredEngine" "SDL2" "SDL2main")
 endif()
 if(_SHATTERED_WINRT)
-    target_link_libraries(ShatteredEngine_Testing "ShatteredEngine" "SDL2" "gdi32" "kernel32" "psapi")
+    target_link_libraries(ShatteredEngine_Testing "ShatteredEngine" "SDL2")
     if(_SHATTERED_DEBUG)
         target_link_libraries(ShatteredEngine_Testing "vccorlibd" "msvcrtd")
     else()
@@ -44,4 +44,4 @@ if(_SHATTERED_UNIX)
     endif()
 endif()
 
-# COPY_DLLS(ShatteredEngine_Testing)
+COPY_DLLS(ShatteredEngine_Testing)

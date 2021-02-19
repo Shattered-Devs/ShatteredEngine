@@ -32,12 +32,37 @@ namespace ShatteredEngine::Core {
     }
 
     Game::~Game() {
+        bgfx_shutdown();
         SDL_Quit();
     }
 
     void Game::run()
     {
         this->initialize();
+
+        // TEMP
+        bgfx_render_frame(-1);
+
+        bgfx_init_t init;
+        bgfx_init_ctor(&init);
+        init.type = bgfx_renderer_type::BGFX_RENDERER_TYPE_DIRECT3D11;
+        init.platformData.nwh = this->window->get_window_context().info.win.window;
+        init.resolution.width = 500;
+        init.resolution.height = 500;
+        init.resolution.reset = BGFX_RESET_VSYNC;
+
+        if (!bgfx_init(&init)) 
+        {
+            std::cerr << "BGFX cannot be initialized !!!" << std::endl;
+            exit(1);
+        }
+
+        const bgfx_view_id_t defaultView = 0;
+
+        bgfx_set_view_clear(defaultView, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0x6495EDFF, 1.0f, 0);
+        bgfx_set_view_rect(defaultView, 0, 0, 500, 500);
+
+
         while (true) {
             SDL_PollEvent(&this->event);
 
@@ -45,8 +70,12 @@ namespace ShatteredEngine::Core {
                 break;
             }
 
+            bgfx_touch(defaultView);
+
             this->update();
             this->render();
+
+            bgfx_frame(false);
         }
         this->shutdown();
     }

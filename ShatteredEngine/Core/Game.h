@@ -27,8 +27,12 @@
 #include <memory>
 #include <string>
 #include <clocale>
+#include <iostream>
 #include <locale.h>
+
 #include <SDL/SDL_syswm.h>
+
+#include <bgfx/c99/bgfx.h>
 
 #include "Window.h"
 

@@ -23,6 +23,7 @@
 
 #include "MainGame.h"
 
+
 MainGame::MainGame(std::string pWindowName) : Game(std::move(pWindowName)) {
 	
 }
