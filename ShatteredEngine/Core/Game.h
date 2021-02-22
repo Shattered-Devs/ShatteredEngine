@@ -30,7 +30,7 @@
 #include <iostream>
 #include <locale.h>
 
-#include <SDL/SDL_syswm.h>
+#include <SDL_syswm.h>
 
 #include <bgfx/c99/bgfx.h>
 
