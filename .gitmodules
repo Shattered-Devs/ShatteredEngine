@@ -1,0 +1,6 @@
+[submodule "3rdParty/SDL"]
+	path = 3rdParty/SDL
+	url = https://github.com/libsdl-org/SDL.git
+[submodule "3rdParty/bgfx.cmake"]
+	path = 3rdParty/bgfx.cmake
+	url = https://github.com/Linuxydable/bgfx.cmake.git
