@@ -13,9 +13,6 @@ include(os_detection.cmake)
 # 3rdParty
 add_subdirectory(3rdParty)
 
-# Functions
-include(functions.cmake)
-
 # Source Code
 add_subdirectory(ShatteredEngine)
 

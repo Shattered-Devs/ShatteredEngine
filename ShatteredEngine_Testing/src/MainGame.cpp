@@ -47,5 +47,5 @@ void MainGame::render()
 
 void MainGame::shutdown()
 {
-	ShatteredEngine::Utils::Logs::WriteLog(ShatteredEngine::Utils::Logs::LogType::INFO, L"Game Engine Shutdown detected !");
+	ShatteredEngine::Utils::Logs::WriteLog(ShatteredEngine::Utils::Logs::LogType::INFO, "Game Engine Shutdown detected !");
 }

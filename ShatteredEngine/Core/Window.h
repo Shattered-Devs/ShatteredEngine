@@ -26,15 +26,11 @@
 
 #include <string>
 #include <memory>
-#include <SDL.h>
-#include <SDL_syswm.h>
 #include "../Geometry/Rectangle.h"
 
 namespace ShatteredEngine::Core {
     class Window {
     private:
-        SDL_Window *_window;
-        SDL_SysWMinfo _windowHandle;
 
         int *_x;
         int *_y;
@@ -49,13 +45,13 @@ namespace ShatteredEngine::Core {
 
         ~Window();
 
-        std::string get_window_name();
-        void set_window_name(std::string pName);
+        // std::string get_window_name();
+        // void set_window_name(std::string pName);
 
-        std::unique_ptr<ShatteredEngine::Geometry::Rectangle> get_window_rectangle();
-        void set_window_rectangle(std::unique_ptr<ShatteredEngine::Geometry::Rectangle> pRectangle);
+        // std::unique_ptr<ShatteredEngine::Geometry::Rectangle> get_window_rectangle();
+        // void set_window_rectangle(std::unique_ptr<ShatteredEngine::Geometry::Rectangle> pRectangle);
 
-        SDL_SysWMinfo get_window_context();
+        // SDL_SysWMinfo get_window_context();
     };
 }
 

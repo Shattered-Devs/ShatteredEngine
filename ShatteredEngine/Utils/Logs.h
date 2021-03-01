@@ -30,7 +30,6 @@
 #include <chrono>
 #include <string>
 #include <cstring>
-#include <termcolor/termcolor.hpp>
 
 namespace ShatteredEngine::Utils
 {
@@ -44,7 +43,7 @@ namespace ShatteredEngine::Utils
         ERR
     };
 
-    static void WriteLog(Logs::LogType pType, std::wstring pMessage);
+    static void WriteLog(Logs::LogType pType, std::string pMessage);
     };
 }
 

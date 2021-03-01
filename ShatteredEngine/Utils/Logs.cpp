@@ -24,24 +24,18 @@
 #include "Logs.h"
 
 namespace ShatteredEngine::Utils {
-    void Logs::WriteLog(Logs::LogType pType, const std::wstring pMessage) {
+    void Logs::WriteLog(Logs::LogType pType, const std::string pMessage) {
 #if _SHATTERED_DEBUG
         // [Time] - [LogType]: Message
         switch (pType) {
             case LogType::INFO:
-                std::cout << termcolor::white << "[" << termcolor::green << "INFO" << termcolor::white << "]: " << termcolor::green;
-                std::wcout << pMessage;
-                std::cout << termcolor::reset << std::endl;
+                std::cout << "[INFO]: " << pMessage << std::endl;
                 break;
             case LogType::WARN:
-                std::cout << termcolor::white << "[" << termcolor::yellow << "WARNING" << termcolor::white << "]: " << termcolor::yellow;
-                std::wcout << pMessage;
-                std::cout << termcolor::reset << std::endl;
+                std::cout << "[WARNING]: " << pMessage << std::endl;
                 break;
             case LogType::ERR:
-                std::cout << termcolor::white << "[" << termcolor::red << "ERROR" << termcolor::white << "]: " << termcolor::red;
-                std::wcout << pMessage;
-                std::cout << termcolor::reset << std::endl;
+                std::cout << "[ERROR]: " << pMessage << std::endl;
                 break;
         }
 #endif

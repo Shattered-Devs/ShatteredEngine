@@ -30,18 +30,12 @@
 #include <iostream>
 #include <locale.h>
 
-#include <SDL_syswm.h>
-
-#include <bgfx/c99/bgfx.h>
-
 #include "Window.h"
 
 
 namespace ShatteredEngine::Core {
     class Game {
     public:
-        SDL_Event event;
-
         std::unique_ptr<Window> window;
 
         Game(std::string pWindowName);

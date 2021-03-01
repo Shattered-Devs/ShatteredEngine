@@ -26,33 +26,28 @@
 namespace ShatteredEngine::Core {
     Window::Window(std::string pWindowName)
 	{
-    	this->_window = SDL_CreateWindow(pWindowName.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 500, 500, SDL_WINDOW_RESIZABLE);
+    	
     }
 
     Window::~Window() {
-        SDL_DestroyWindow(_window);
+        
     }
 
-    std::string Window::get_window_name() {
-        return SDL_GetWindowTitle(_window);
-    }
+    // std::string Window::get_window_name() {
+        
+    // }
 
-    void Window::set_window_name(std::string pName) {
-        SDL_SetWindowTitle(_window, pName.c_str());
-    }
+    // void Window::set_window_name(std::string pName) {
+        
+    // }
 
-    std::unique_ptr<ShatteredEngine::Geometry::Rectangle> Window::get_window_rectangle() {
-        return std::make_unique<ShatteredEngine::Geometry::Rectangle>(*_x, *_y, *_width, *_height);
-    }
+    // std::unique_ptr<ShatteredEngine::Geometry::Rectangle> Window::get_window_rectangle() {
+    // }
 
-    void Window::set_window_rectangle(std::unique_ptr<ShatteredEngine::Geometry::Rectangle> pRectangle) {
-        SDL_SetWindowPosition(_window, pRectangle->Position->X, pRectangle->Position->Y);
-        SDL_SetWindowSize(_window, pRectangle->Size->X, pRectangle->Size->Y);
-    }
+    // void Window::set_window_rectangle(std::unique_ptr<ShatteredEngine::Geometry::Rectangle> pRectangle) {
+    // }
 
-    SDL_SysWMinfo Window::get_window_context() {
-        SDL_VERSION(&_windowHandle.version);
-        SDL_GetWindowWMInfo(_window, &_windowHandle);
-        return this->_windowHandle;
-    }
+    // SDL_SysWMinfo Window::get_window_context() {
+
+    // }
 }
