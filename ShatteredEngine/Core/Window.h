@@ -26,7 +26,6 @@
 
 #include <string>
 #include <memory>
-#include "../Geometry/Rectangle.h"
 
 namespace ShatteredEngine::Core {
     class Window {
