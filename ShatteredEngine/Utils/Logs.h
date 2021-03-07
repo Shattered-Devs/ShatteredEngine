@@ -1,7 +1,7 @@
 //
 // Shattered Engine
 //
-// Copyright (c) 2020 John (Linuxydable) Benard
+// Copyright (c) 2021 John (Linuxydable) Benard
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -21,8 +21,8 @@
 // SOFTWARE.c
 //
 
-#ifndef UTILS_LOGS_H
-#define UTILS_LOGS_H
+#ifndef LOGS_H
+#define LOGS_H
 
 #include <ctime>
 #include <iostream>
@@ -47,4 +47,4 @@ namespace ShatteredEngine::Utils
     };
 }
 
-#endif //UTILS_LOGS_H
+#endif // LOGS_H

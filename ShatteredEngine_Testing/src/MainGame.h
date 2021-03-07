@@ -1,7 +1,7 @@
 //
 // Shattered Engine
 //
-// Copyright (c) 2020 John (Linuxydable) Benard
+// Copyright (c) 2021 John (Linuxydable) Benard
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -21,8 +21,8 @@
 // SOFTWARE.c
 //
 
-#ifndef SHATTEREDENGINE_TESTING_MAINGAME_H
-#define SHATTEREDENGINE_TESTING_MAINGAME_H
+#ifndef MAINGAME_H
+#define MAINGAME_H
 
 #include <Core/Game.h>
 #include <Utils/Logs.h>
@@ -39,4 +39,4 @@ public:
 };
 
 
-#endif //SHATTEREDENGINE_TESTING_MAINGAME_H
+#endif // MAINGAME_H

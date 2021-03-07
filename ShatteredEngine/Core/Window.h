@@ -1,7 +1,7 @@
 //
 // Shattered Engine
 //
-// Copyright (c) 2020 John (Linuxydable) Benard
+// Copyright (c) 2021 John (Linuxydable) Benard
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -21,8 +21,8 @@
 // SOFTWARE.c
 //
 
-#ifndef SHATTERED_ENGINE_CORE_WINDOW_H
-#define SHATTERED_ENGINE_CORE_WINDOW_H
+#ifndef WINDOW_H
+#define WINDOW_H
 
 #include <string>
 #include <memory>
@@ -55,4 +55,4 @@ namespace ShatteredEngine::Core {
 }
 
 
-#endif //SHATTERED_ENGINE_CORE_WINDOW_H
+#endif // WINDOW_H
