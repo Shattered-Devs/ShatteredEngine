@@ -24,26 +24,38 @@
 #include "Game.h"
 
 namespace ShatteredEngine::Core {
-    Game::Game(std::string pWindowName) {
+    Game::Game(std::string p_WindowName) {
         std::setlocale(LC_ALL, ".UTF-8");
 
-        this->window = std::make_unique<Window>(pWindowName);
+        SDL_Init(SDL_INIT_EVERYTHING);
+
+        this->window = std::make_unique<Window>(p_WindowName, 500, 500);
     }
 
     Game::~Game() {
+        SDL_Quit();
     }
 
     void Game::run()
     {
         this->initialize();
 
-        /*
+        // GAMELOOP
         while (true) {
+            SDL_PollEvent(&this->events);
+            last = now;
+            now = SDL_GetPerformanceCounter();
 
-            this->update();
+            deltaTime = (double)((now - last)*1000 / (double)SDL_GetPerformanceFrequency());
+
+            if(events.type == SDL_QUIT)
+            {
+                break;
+            }
+
+            this->update(deltaTime);
             this->render();
         }
-        */
         this->shutdown();
     }
 
@@ -51,7 +63,7 @@ namespace ShatteredEngine::Core {
 	{
 	}
 
-	void Game::update()
+	void Game::update(double p_DeltaTime)
 	{
 	}
 

@@ -13,6 +13,6 @@ if(_SHATTERED_WINRT)
     endif()
 endif()
 
-target_link_libraries(ShatteredEngine_Testing "ShatteredEngine")
+target_link_libraries(ShatteredEngine_Testing "ShatteredEngine" "SDL2main")
 
 target_include_directories(ShatteredEngine_Testing PRIVATE "../ShatteredEngine")

@@ -24,12 +24,8 @@
 #ifndef LOGS_H
 #define LOGS_H
 
-#include <ctime>
 #include <iostream>
-#include <iomanip>
-#include <chrono>
 #include <string>
-#include <cstring>
 
 namespace ShatteredEngine::Utils
 {

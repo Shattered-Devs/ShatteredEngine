@@ -24,30 +24,26 @@
 #include "Window.h"
 
 namespace ShatteredEngine::Core {
-    Window::Window(std::string pWindowName)
+    Window::Window(std::string p_WindowName, int p_Width, int p_Height)
 	{
-    	
+    	this->Window::Window(p_WindowName, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, p_Width, p_Height);
+    }
+
+    Window::Window(std::string p_WindowName, int p_X, int p_Y, int p_Width, int p_Height)
+    {
+        _window = SDL_CreateWindow(p_WindowName.c_str(), p_X, p_Y, p_Width, p_Height, SDL_WINDOW_RESIZABLE);
     }
 
     Window::~Window() {
-        
+        SDL_DestroyWindow(_window);
     }
 
-    // std::string Window::get_window_name() {
-        
-    // }
+    SDL_SysWMinfo Window::GetWindowHandle()
+    {
+        SDL_GetVersion(&this->_windowHandle.version);
 
-    // void Window::set_window_name(std::string pName) {
-        
-    // }
+        SDL_GetWindowWMInfo(this->_window, &this->_windowHandle);
 
-    // std::unique_ptr<ShatteredEngine::Geometry::Rectangle> Window::get_window_rectangle() {
-    // }
-
-    // void Window::set_window_rectangle(std::unique_ptr<ShatteredEngine::Geometry::Rectangle> pRectangle) {
-    // }
-
-    // SDL_SysWMinfo Window::get_window_context() {
-
-    // }
+        return _windowHandle;
+    }
 }

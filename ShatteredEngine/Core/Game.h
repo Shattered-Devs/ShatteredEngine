@@ -30,22 +30,32 @@
 #include <iostream>
 #include <locale.h>
 
+#include <SDL.h>
+
 #include "Window.h"
 
 
 namespace ShatteredEngine::Core {
     class Game {
+    private:
+        Uint64 now = SDL_GetPerformanceCounter();
+        Uint64 last = 0;
+        
     public:
+        double deltaTime = 0;
+
         std::unique_ptr<Window> window;
 
-        Game(std::string pWindowName);
+        SDL_Event events;
+
+        Game(std::string p_WindowName);
 
         ~Game();
 
         void run();
 
         virtual void initialize();
-        virtual void update();
+        virtual void update(double p_DeltaTime);
         virtual void render();
         virtual void shutdown();
     };

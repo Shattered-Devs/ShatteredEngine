@@ -26,7 +26,7 @@
 namespace ShatteredEngine::Utils {
     void Logs::WriteLog(Logs::LogType pType, const std::string pMessage) {
 #if _SHATTERED_DEBUG
-        // [Time] - [LogType]: Message
+        // [LogType]: Message
         switch (pType) {
             case LogType::INFO:
                 std::cout << "[INFO]: " << pMessage << std::endl;

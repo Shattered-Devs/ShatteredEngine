@@ -29,11 +29,11 @@
 
 class MainGame : public ShatteredEngine::Core::Game {
 public:
-    MainGame(std::string pWindowName);
+    MainGame(std::string p_WindowName);
     ~MainGame();
 
     void initialize() override;
-    void update() override;
+    void update(double p_DeltaTime) override;
     void render() override;
 	void shutdown() override;
 };

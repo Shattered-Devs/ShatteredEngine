@@ -27,30 +27,30 @@
 #include <string>
 #include <memory>
 
+#include <SDL.h>
+#include <SDL_syswm.h>
+
 namespace ShatteredEngine::Core {
     class Window {
     private:
 
-        int *_x;
-        int *_y;
-        int *_width;
-        int *_height;
+        int _x;
+        int _y;
+        int _width;
+        int _height;
 
         std::string _windowName;
 
+        SDL_SysWMinfo _windowHandle;
+        SDL_Window *_window;
 
     public:
-        Window(std::string pWindowName);
+        Window(std::string pWindowName, int p_Width, int p_Height);
+        Window(std::string pWindowName, int p_X, int p_Y, int p_Width, int p_Height);
 
         ~Window();
 
-        // std::string get_window_name();
-        // void set_window_name(std::string pName);
-
-        // std::unique_ptr<ShatteredEngine::Geometry::Rectangle> get_window_rectangle();
-        // void set_window_rectangle(std::unique_ptr<ShatteredEngine::Geometry::Rectangle> pRectangle);
-
-        // SDL_SysWMinfo get_window_context();
+        SDL_SysWMinfo GetWindowHandle();
     };
 }
 

@@ -24,7 +24,7 @@
 #include "MainGame.h"
 
 
-MainGame::MainGame(std::string pWindowName) : Game(std::move(pWindowName)) {
+MainGame::MainGame(std::string p_WindowName) : Game(std::move(p_WindowName)) {
 	
 }
 
@@ -35,7 +35,7 @@ void MainGame::initialize()
 
 }
 
-void MainGame::update()
+void MainGame::update(double p_DeltaTime)
 {
 
 }
