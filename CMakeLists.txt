@@ -10,9 +10,6 @@ project(ShatteredEngine_Testing)
 include(os_detection.cmake)
 
 
-# 3rdParty
-add_subdirectory(3rdParty)
-
 # Source Code
 add_subdirectory(ShatteredEngine)
 

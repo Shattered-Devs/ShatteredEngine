@@ -46,7 +46,7 @@ endif()
 
 # Check x64 compilaiton
 check_c_source_compiles("
-#if (_M_IA64 || __ia64__ || _IA64 || __IA64__ || __amd64__ || __amd64 || __x86_64__ || __x86_64 || _M_AMD64)
+#if (__amd64__ || __amd64 || __x86_64__ || __x86_64 || _M_AMD64)
 int main(int argc, char **argv)
 {
 	return 0;
@@ -98,3 +98,5 @@ elseif(_SHATTERED_ARM64)
 else()
 	message("Building the Engine for UNKNOWN CPU ARCH.")
 endif()
+
+message("Building the Engine for ${CMAKE_SYSTEM_NAME}.")
