@@ -30,7 +30,7 @@
 #include <iostream>
 #include <locale.h>
 
-#include <SDL.h>
+#include <SDL/SDL.h>
 
 #include "Window.h"
 
