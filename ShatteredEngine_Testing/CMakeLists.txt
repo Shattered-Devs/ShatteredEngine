@@ -1,10 +1,18 @@
 project(ShatteredEngine_Testing)
 
-add_executable(ShatteredEngine_Testing "src/main.cpp" "src/MainGame.cpp")
+### Specify executable for for each systems
+if(_SHATTERED_WIN32)
+    add_executable(ShatteredEngine_Testing WIN32 "src/main.cpp" "src/MainGame.cpp")
+elseif(_SHATTERED_BUNDLE)
+    add_executable(ShatteredEngine_Testing MACOSX_BUNDLE "src/main.cpp" "src/MainGame.cpp")
+else()
+    add_executable(ShatteredEngine_Testing "src/main.cpp" "src/MainGame.cpp")
+endif()
 
 # Force C++ 17 Standard
 set_property(TARGET ShatteredEngine_Testing PROPERTY CXX_STANDARD 17)
 
+# Select Debug or Release runtime for UWP
 if(_SHATTERED_WINRT)
     if(_SHATTERED_DEBUG)
         target_link_libraries(ShatteredEngine_Testing "vccorlibd" "msvcrtd")
@@ -13,21 +21,53 @@ if(_SHATTERED_WINRT)
     endif()
 endif()
 
-target_link_libraries(ShatteredEngine_Testing "ShatteredEngine" "SDL2main")
-
 target_include_directories(ShatteredEngine_Testing PRIVATE "../ShatteredEngine/" PRIVATE "../include/" PRIVATE "./")
 
-if(_SHATTERED_WINDOWS)
-    set(libraries "SDL2" "bgfx-shared-libRelease")
+
+set(libraries "SDL2" "bgfx-shared-libRelease")
+
+### UWP Dependancies resolution
+if(_SHATTERED_WINRT)
+    if(_SHATTERED_X86)
+        target_link_directories(ShatteredEngine_Testing PRIVATE "../libs/UWP/x86/")
+        foreach(lib IN LISTS libraries)
+            file(COPY "../libs/UWP/x86/${lib}.dll" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
+            target_sources(ShatteredEngine_Testing PRIVATE "../libs/UWP/x86/${lib}.dll")
+            set_property(SOURCE "../libs/UWP/x86/${lib}.dll" PROPERTY VS_DEPLOYMENT_CONTENT 1)
+        endforeach()
+    elseif(_SHATTERED_X64)
+        target_link_directories(ShatteredEngine_Testing PRIVATE "../libs/UWP/x64/")
+        foreach(lib IN LISTS libraries)
+            file(COPY "../libs/UWP/x64/${lib}.dll" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
+            target_sources(ShatteredEngine_Testing PRIVATE "../libs/UWP/x64/${lib}.dll")
+            set_property(SOURCE "../libs/UWP/x64/${lib}.dll" PROPERTY VS_DEPLOYMENT_CONTENT 1)
+        endforeach()
+    elseif(_SHATTERED_ARM)
+        target_link_directories(ShatteredEngine_Testing PRIVATE "../libs/UWP/ARM/")
+        foreach(lib IN LISTS libraries)
+            file(COPY "../libs/UWP/ARM/${lib}.dll" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
+            target_sources(ShatteredEngine_Testing PRIVATE "../libs/UWP/ARM/${lib}.dll")
+            set_property(SOURCE "../libs/UWP/ARM/${lib}.dll" PROPERTY VS_DEPLOYMENT_CONTENT 1)
+        endforeach()
+        set_source_files_properties("src/main.cpp" PROPERTIES COMPILE_FLAGS "/ZW")
+    endif()
+
+    target_link_libraries(ShatteredEngine_Testing SDL2 bgfx-shared-libRelease)
+### Windows Dependancies resolution
+elseif(_SHATTERED_WINDOWS)
     if(_SHATTERED_X86)
         target_link_directories(ShatteredEngine_Testing PRIVATE "../libs/Windows/x86/")
         foreach(lib IN LISTS libraries)
             file(COPY "../libs/Windows/x86/${lib}.dll" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
+            target_sources(ShatteredEngine_Testing PRIVATE "../libs/Windows/x86/${lib}.dll")
+            set_property(SOURCE "../libs/Windows/x86/${lib}.dll" PROPERTY VS_DEPLOYMENT_CONTENT 1)
         endforeach()
     elseif(_SHATTERED_X64)
         target_link_directories(ShatteredEngine_Testing PRIVATE "../libs/Windows/x64/")
         foreach(lib IN LISTS libraries)
             file(COPY "../libs/Windows/x64/${lib}.dll" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
+            target_sources(ShatteredEngine_Testing PRIVATE "../libs/Windows/x64/${lib}.dll")
+            set_property(SOURCE "../libs/Windows/x64/${lib}.dll" PROPERTY VS_DEPLOYMENT_CONTENT 1)
         endforeach()
     endif()
 

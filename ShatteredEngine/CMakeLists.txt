@@ -8,5 +8,3 @@ add_library(ShatteredEngine STATIC ${sources})
 set_property(TARGET ShatteredEngine PROPERTY CXX_STANDARD 17)
 
 target_include_directories(ShatteredEngine PRIVATE "../include/" "./")
-
-# target_link_libraries(ShatteredEngine)

@@ -22,6 +22,7 @@
 //
 
 #include <memory>
+
 #include <Core/Game.h>
 #include <Utils/Logs.h>
 
