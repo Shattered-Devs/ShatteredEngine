@@ -27,8 +27,8 @@
 #include <string>
 #include <memory>
 
-#include <SDL/SDL.h>
-#include <SDL/SDL_syswm.h>
+#include <SDL.h>
+#include <SDL_syswm.h>
 
 namespace ShatteredEngine::Core {
     class Window {
